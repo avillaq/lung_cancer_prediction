@@ -4,27 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Sistema de Predicción de Cáncer de Pulmón{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">Sistema de Predicción de Cáncer de Pulmón</div>
-                <nav>
-                    <a href="{{ url_for('home') }}">Inicio</a>
-                    <a href="{{ url_for('formulario') }}">Nueva Predicción</a>
+<body class="font-sans leading-relaxed text-gray-800 bg-gray-50">
+    <header class="bg-white border-b border-gray-200 shadow-sm">
+        <div class="max-w-6xl mx-auto px-5">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-xl font-semibold text-gray-700">
+                    Sistema de Predicción de Cáncer de Pulmón
+                </div>
+                <nav class="flex space-x-8">
+                    <a href="{{ url_for('home') }}" 
+                       class="text-gray-600 font-medium hover:text-gray-800 transition-colors duration-200">
+                        Inicio
+                    </a>
+                    <a href="{{ url_for('formulario') }}" 
+                       class="text-gray-600 font-medium hover:text-gray-800 transition-colors duration-200">
+                        Nueva Predicción
+                    </a>
                 </nav>
             </div>
         </div>
     </header>
 
-    <main>
-        <div class="container">
+    <main class="py-8 min-h-screen">
+        <div class="max-w-6xl mx-auto px-5">
             {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
                     {% for category, message in messages %}
-                        <div class="alert alert-{{ category }}">{{ message }}</div>
+                        <div class="mb-4 p-4 rounded-lg border {% if category == 'error' %}bg-red-50 border-red-200 text-red-800{% endif %}">
+                            {{ message }}
+                        </div>
                     {% endfor %}
                 {% endif %}
             {% endwith %}

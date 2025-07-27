@@ -3,183 +3,204 @@
 {% block title %}Nueva Predicción - Sistema de Predicción de Cáncer de Pulmón{% endblock %}
 
 {% block content %}
-<div class="card">
-    <h1>Formulario de Predicción</h1>
-    <p>Complete todos los campos con valores dentro de los rangos especificados.</p>
+<div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+    <h1 class="text-3xl font-bold text-gray-800 mb-4">Formulario de Predicción</h1>
+    <p class="text-gray-600 mb-8">Complete todos los campos con valores dentro de los rangos especificados.</p>
     
-    <div id="loading" style="display: none; text-align: center; margin: 2rem 0;">
-        <div style="display: inline-block; padding: 1rem 2rem; background-color: #e9ecef; border-radius: 4px;">
-            <p style="margin: 0; font-weight: 500;">Procesando predicción...</p>
+    <div id="loading" class="hidden text-center my-8">
+        <div class="inline-block p-4 bg-gray-100 rounded-lg">
+            <p class="font-medium text-gray-700">Procesando predicción...</p>
         </div>
     </div>
     
-    <div id="error-message" style="display: none;" class="alert alert-error"></div>
+    <div id="error-message" class="hidden mb-4 p-4 bg-red-50 border border-red-200 text-red-800 rounded-lg"></div>
     
-    <form id="prediccion-form" style="margin-top: 2rem;">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+    <form id="prediccion-form" class="mt-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
             <div class="form-group">
-                <label for="air_pollution">Contaminación del Aire (1-8):</label>
-                <input type="number" id="air_pollution" name="air_pollution" min="1" max="8" required>
+                <label for="air_pollution" class="block mb-2 font-medium text-gray-700">
+                    Contaminación del Aire (1-8):
+                </label>
+                <input type="number" id="air_pollution" name="air_pollution" min="1" max="8" required
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500 outline-none transition-colors">
             </div>
             
             <div class="form-group">
-                <label for="alcohol_use">Consumo de Alcohol (1-8):</label>
-                <input type="number" id="alcohol_use" name="alcohol_use" min="1" max="8" required>
+                <label for="alcohol_use" class="block mb-2 font-medium text-gray-700">
+                    Consumo de Alcohol (1-8):
+                </label>
+                <input type="number" id="alcohol_use" name="alcohol_use" min="1" max="8" required
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500 outline-none transition-colors">
             </div>
             
             <div class="form-group">
-                <label for="dust_allergy">Alergia al Polvo (1-8):</label>
-                <input type="number" id="dust_allergy" name="dust_allergy" min="1" max="8" required>
+                <label for="dust_allergy" class="block mb-2 font-medium text-gray-700">
+                    Alergia al Polvo (1-8):
+                </label>
+                <input type="number" id="dust_allergy" name="dust_allergy" min="1" max="8" required
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500 outline-none transition-colors">
             </div>
             
             <div class="form-group">
-                <label for="occupational_hazards">Riesgos Ocupacionales (1-8):</label>
-                <input type="number" id="occupational_hazards" name="occupational_hazards" min="1" max="8" required>
+                <label for="occupational_hazards" class="block mb-2 font-medium text-gray-700">
+                    Riesgos Ocupacionales (1-8):
+                </label>
+                <input type="number" id="occupational_hazards" name="occupational_hazards" min="1" max="8" required
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500 outline-none transition-colors">
             </div>
             
             <div class="form-group">
-                <label for="genetic_risk">Riesgo Genético (1-7):</label>
-                <input type="number" id="genetic_risk" name="genetic_risk" min="1" max="7" required>
+                <label for="genetic_risk" class="block mb-2 font-medium text-gray-700">
+                    Riesgo Genético (1-7):
+                </label>
+                <input type="number" id="genetic_risk" name="genetic_risk" min="1" max="7" required
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500 outline-none transition-colors">
             </div>
             
             <div class="form-group">
-                <label for="chronic_lung_disease">Enfermedad Pulmonar Crónica (1-7):</label>
-                <input type="number" id="chronic_lung_disease" name="chronic_lung_disease" min="1" max="7" required>
+                <label for="chronic_lung_disease" class="block mb-2 font-medium text-gray-700">
+                    Enfermedad Pulmonar Crónica (1-7):
+                </label>
+                <input type="number" id="chronic_lung_disease" name="chronic_lung_disease" min="1" max="7" required
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500 outline-none transition-colors">
             </div>
             
             <div class="form-group">
-                <label for="balanced_diet">Dieta Balanceada (1-7):</label>
-                <input type="number" id="balanced_diet" name="balanced_diet" min="1" max="7" required>
+                <label for="balanced_diet" class="block mb-2 font-medium text-gray-700">
+                    Dieta Balanceada (1-7):
+                </label>
+                <input type="number" id="balanced_diet" name="balanced_diet" min="1" max="7" required
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500 outline-none transition-colors">
             </div>
             
             <div class="form-group">
-                <label for="obesity">Obesidad (1-7):</label>
-                <input type="number" id="obesity" name="obesity" min="1" max="7" required>
+                <label for="obesity" class="block mb-2 font-medium text-gray-700">
+                    Obesidad (1-7):
+                </label>
+                <input type="number" id="obesity" name="obesity" min="1" max="7" required
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500 outline-none transition-colors">
             </div>
             
             <div class="form-group">
-                <label for="smoking">Tabaquismo (1-8):</label>
-                <input type="number" id="smoking" name="smoking" min="1" max="8" required>
+                <label for="smoking" class="block mb-2 font-medium text-gray-700">
+                    Tabaquismo (1-8):
+                </label>
+                <input type="number" id="smoking" name="smoking" min="1" max="8" required
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500 outline-none transition-colors">
             </div>
             
             <div class="form-group">
-                <label for="passive_smoker">Fumador Pasivo (1-8):</label>
-                <input type="number" id="passive_smoker" name="passive_smoker" min="1" max="8" required>
+                <label for="passive_smoker" class="block mb-2 font-medium text-gray-700">
+                    Fumador Pasivo (1-8):
+                </label>
+                <input type="number" id="passive_smoker" name="passive_smoker" min="1" max="8" required
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500 outline-none transition-colors">
             </div>
             
             <div class="form-group">
-                <label for="chest_pain">Dolor en el Pecho (1-9):</label>
-                <input type="number" id="chest_pain" name="chest_pain" min="1" max="9" required>
+                <label for="chest_pain" class="block mb-2 font-medium text-gray-700">
+                    Dolor en el Pecho (1-9):
+                </label>
+                <input type="number" id="chest_pain" name="chest_pain" min="1" max="9" required
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500 outline-none transition-colors">
             </div>
             
             <div class="form-group">
-                <label for="coughing_blood">Tos con Sangre (1-9):</label>
-                <input type="number" id="coughing_blood" name="coughing_blood" min="1" max="9" required>
+                <label for="coughing_blood" class="block mb-2 font-medium text-gray-700">
+                    Tos con Sangre (1-9):
+                </label>
+                <input type="number" id="coughing_blood" name="coughing_blood" min="1" max="9" required
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500 outline-none transition-colors">
             </div>
             
             <div class="form-group">
-                <label for="fatigue">Fatiga (1-9):</label>
-                <input type="number" id="fatigue" name="fatigue" min="1" max="9" required>
+                <label for="fatigue" class="block mb-2 font-medium text-gray-700">
+                    Fatiga (1-9):
+                </label>
+                <input type="number" id="fatigue" name="fatigue" min="1" max="9" required
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500 outline-none transition-colors">
             </div>
             
             <div class="form-group">
-                <label for="shortness_breath">Dificultad para Respirar (1-9):</label>
-                <input type="number" id="shortness_breath" name="shortness_breath" min="1" max="9" required>
+                <label for="shortness_breath" class="block mb-2 font-medium text-gray-700">
+                    Dificultad para Respirar (1-9):
+                </label>
+                <input type="number" id="shortness_breath" name="shortness_breath" min="1" max="9" required
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500 outline-none transition-colors">
             </div>
             
             <div class="form-group">
-                <label for="frequent_cold">Resfriados Frecuentes (1-7):</label>
-                <input type="number" id="frequent_cold" name="frequent_cold" min="1" max="7" required>
+                <label for="frequent_cold" class="block mb-2 font-medium text-gray-700">
+                    Resfriados Frecuentes (1-7):
+                </label>
+                <input type="number" id="frequent_cold" name="frequent_cold" min="1" max="7" required
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-500 focus:border-gray-500 outline-none transition-colors">
             </div>
             
         </div>
         
-        <div style="margin-top: 2rem; text-align: center;">
-            <button type="submit" class="btn" id="submit-btn">Realizar Predicción</button>
-            <a href="{{ url_for('home') }}" class="btn btn-secondary" style="margin-left: 1rem;">Cancelar</a>
+        <div class="mt-8 text-center">
+            <button type="submit" id="submit-btn" 
+                    class="px-8 py-3 bg-gray-700 text-white font-medium rounded-lg hover:bg-gray-800 transition-colors duration-200 disabled:bg-gray-400 disabled:cursor-not-allowed">
+                Realizar Predicción
+            </button>
+            <a href="{{ url_for('home') }}" 
+               class="ml-4 px-8 py-3 bg-gray-500 text-white font-medium rounded-lg hover:bg-gray-600 transition-colors duration-200">
+                Cancelar
+            </a>
         </div>
     </form>
 </div>
 
 <!-- Resultados -->
-<div id="results-section" class="card" style="display: none;">
-    <h1>Resultado de la Predicción</h1>
+<div id="results-section" class="hidden bg-white rounded-lg shadow-lg p-8">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">Resultado de la Predicción</h1>
     
-    <div style="background-color: #f8f9fa; padding: 2rem; border-radius: 8px; margin: 2rem 0; text-align: center; border: 2px solid #e9ecef;">
-        <h2 style="margin-bottom: 1rem; color: #2c3e50;">Nivel de Riesgo de Cáncer de Pulmón</h2>
-        <div id="prediction-result" style="font-size: 2.5rem; font-weight: bold; margin: 1rem 0; text-transform: uppercase; letter-spacing: 1px;"></div>
-        <p id="confidence-score" style="font-size: 1.1rem; margin-top: 1rem;"><strong>Confianza del Modelo:</strong> <span id="confidence-value"></span>%</p>
+    <div class="bg-gray-50 p-8 rounded-lg border-2 border-gray-200 text-center mb-8">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Nivel de Riesgo de Cáncer de Pulmón</h2>
+        <div id="prediction-result" class="text-4xl font-bold uppercase tracking-wide mb-4"></div>
+        <p id="confidence-score" class="text-lg">
+            <strong>Confianza del Modelo:</strong> <span id="confidence-value"></span>%
+        </p>
     </div>
     
-    <div style="background-color: #f8f9fa; padding: 1.5rem; border-radius: 4px; margin: 2rem 0;">
-        <h3 style="margin-bottom: 1rem;">Interpretación de Resultados</h3>
-        <div id="risk-interpretation">
-            <p><strong>Riesgo Bajo (0):</strong> Bajo probabilidad de desarrollar cáncer de pulmón basado en los factores analizados.</p>
+    <div class="bg-gray-50 p-6 rounded-lg mb-8">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">Interpretación de Resultados</h3>
+        <div class="space-y-2 text-gray-700">
+            <p><strong>Riesgo Bajo (0):</strong> Baja probabilidad de desarrollar cáncer de pulmón basado en los factores analizados.</p>
             <p><strong>Riesgo Medio (1):</strong> Probabilidad moderada que requiere monitoreo y posibles cambios en el estilo de vida.</p>
             <p><strong>Riesgo Alto (2):</strong> Alta probabilidad que requiere atención médica inmediata y evaluación profesional.</p>
         </div>
     </div>
     
-    <details style="margin: 2rem 0;">
-        <summary style="cursor: pointer; font-weight: bold; padding: 0.5rem; background-color: #e9ecef; border-radius: 4px;">Ver Datos Ingresados</summary>
-        <div id="input-data" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1rem 0; padding: 1rem; background-color: #f8f9fa; border-radius: 4px;"></div>
+    <details class="my-8">
+        <summary class="cursor-pointer font-semibold p-3 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+            Ver Datos Ingresados
+        </summary>
+        <div id="input-data" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4 p-4 bg-gray-50 rounded-lg">
+        </div>
     </details>
     
-    <div style="margin-top: 2rem; padding: 1.5rem; background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px;">
-        <h4 style="color: #856404; margin-bottom: 0.5rem;">⚠️ Importante</h4>
-        <p style="margin: 0; color: #856404;"><strong>Este resultado es generado por un modelo de inteligencia artificial y debe ser interpretado por un profesional médico.</strong> No sustituye una consulta médica profesional. Si el resultado indica riesgo medio o alto, se recomienda consultar con un especialista.</p>
+    <div class="p-6 bg-yellow-50 border border-yellow-200 rounded-lg mb-8">
+        <h4 class="text-yellow-800 font-semibold mb-2">⚠️ Importante</h4>
+        <p class="text-yellow-800">
+            <strong>Este resultado es generado por un modelo de inteligencia artificial y debe ser interpretado por un profesional médico.</strong> 
+            No sustituye una consulta médica profesional. Si el resultado indica riesgo medio o alto, se recomienda consultar con un especialista.
+        </p>
     </div>
     
-    <div style="margin-top: 2rem; text-align: center;">
-        <button onclick="resetForm()" class="btn">Nueva Predicción</button>
-        <a href="{{ url_for('home') }}" class="btn btn-secondary" style="margin-left: 1rem;">Inicio</a>
+    <div class="text-center">
+        <button onclick="resetForm()" 
+                class="px-8 py-3 bg-gray-700 text-white font-medium rounded-lg hover:bg-gray-800 transition-colors duration-200">
+            Nueva Predicción
+        </button>
+        <a href="{{ url_for('home') }}" 
+           class="ml-4 px-8 py-3 bg-gray-500 text-white font-medium rounded-lg hover:bg-gray-600 transition-colors duration-200">
+            Inicio
+        </a>
     </div>
 </div>
-
-<style>
-.form-group {
-    margin-bottom: 1rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    color: #2c3e50;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-}
-
-.form-group input:focus {
-    outline: none;
-    border-color: #2c3e50;
-    box-shadow: 0 0 0 2px rgba(44, 62, 80, 0.1);
-}
-
-.btn:disabled {
-    background-color: #6c757d;
-    cursor: not-allowed;
-}
-
-details summary {
-    list-style: none;
-}
-
-details summary::-webkit-details-marker {
-    display: none;
-}
-
-details[open] summary {
-    margin-bottom: 1rem;
-}
-</style>
 
 <script defer src="{{ url_for('static', filename='js/script.js') }}"></script>
 {% endblock %}

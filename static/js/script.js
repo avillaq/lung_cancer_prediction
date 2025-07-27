@@ -60,26 +60,28 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function showLoading() {
-    document.querySelector('#loading').style.display = 'block';
-    document.querySelector('#submit-btn').disabled = true;
-    document.querySelector('#submit-btn').textContent = 'Procesando...';
+    document.querySelector('#loading').classList.remove('hidden');
+    const submitBtn = document.querySelector('#submit-btn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Procesando...';
 }
 
 function hideLoading() {
-    document.querySelector('#loading').style.display = 'none';
-    document.querySelector('#submit-btn').disabled = false;
-    document.querySelector('#submit-btn').textContent = 'Realizar Predicción';
+    document.querySelector('#loading').classList.add('hidden');
+    const submitBtn = document.querySelector('#submit-btn');
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Realizar Predicción';
 }
 
 function showError(message) {
     const errorDiv = document.querySelector('#error-message');
     errorDiv.textContent = message;
-    errorDiv.style.display = 'block';
+    errorDiv.classList.remove('hidden');
     errorDiv.scrollIntoView({ behavior: 'smooth' });
 }
 
 function hideError() {
-    document.querySelector('#error-message').style.display = 'none';
+    document.querySelector('#error-message').classList.add('hidden');
 }
 
 function getRiskLabel(predictionLabel) {
@@ -93,29 +95,28 @@ function getRiskLabel(predictionLabel) {
 
 function getRiskColor(predictionLabel) {
     const riskColors = {
-        0: '#28a745', // Verde para riesgo bajo
-        1: '#ffc107', // Amarillo para riesgo medio
-        2: '#dc3545'  // Rojo para riesgo alto
+        0: 'text-green-600', // Verde para riesgo bajo
+        1: 'text-yellow-600', // Amarillo para riesgo medio
+        2: 'text-red-600'  // Rojo para riesgo alto
     };
-    return riskColors[predictionLabel] || '#2c3e50';
+    return riskColors[predictionLabel] || 'text-gray-700';
 }
 
 function displayResults(prediction, formData) {
     // Se esconde el formulario y se muestra la sección de resultados
-    document.querySelector('.card').style.display = 'none';
-    document.querySelector('#results-section').style.display = 'block';
+    document.querySelector('.bg-white.rounded-lg.shadow-lg.p-8.mb-8').classList.add('hidden');
+    document.querySelector('#results-section').classList.remove('hidden');
     
     // Mostrar resultados de la predicción
     const predictionElement = document.querySelector('#prediction-result');
     const riskLabel = getRiskLabel(prediction.prediction_label);
-    const riskColor = getRiskColor(prediction.prediction_label);
+    const riskColorClass = getRiskColor(prediction.prediction_label);
     
     predictionElement.textContent = riskLabel;
-    predictionElement.style.color = riskColor;
+    predictionElement.className = `text-4xl font-bold uppercase tracking-wide mb-4 ${riskColorClass}`;
     
     // Mostrar el puntaje de confianza si está disponible
     if (prediction.prediction_score !== undefined) {
-        document.querySelector('#confidence-score').style.display = 'block';
         document.querySelector('#confidence-value').textContent = (prediction.prediction_score * 100).toFixed(1);
     }
 
@@ -142,6 +143,7 @@ function displayResults(prediction, formData) {
     inputDataDiv.innerHTML = '';
     for (const [key, value] of Object.entries(formData)) {
         const div = document.createElement('div');
+        div.className = 'text-gray-700';
         div.innerHTML = `<strong>${labels[key]}:</strong> ${value}`;
         inputDataDiv.appendChild(div);
     }
@@ -151,8 +153,8 @@ function displayResults(prediction, formData) {
 
 function resetForm() {
     // Mostrar el formulario y ocultar la sección de resultados
-    document.querySelector('.card').style.display = 'block';
-    document.querySelector('#results-section').style.display = 'none';
+    document.querySelector('.bg-white.rounded-lg.shadow-lg.p-8.mb-8').classList.remove('hidden');
+    document.querySelector('#results-section').classList.add('hidden');
     
     // Limpiar el formulario
     document.querySelector('#prediccion-form').reset();
