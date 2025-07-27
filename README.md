@@ -217,11 +217,3 @@ lung_cancer_prediction/
 ## 📄 Licencia
 
 Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
-
-## 👥 Equipo
-
-- **Desarrollador Principal**: Alexander Villafuerte Quispe
-
-## 📞 Contacto
-
-- **Email**: villafuertequispealex@gmail.com
