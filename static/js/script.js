@@ -4,11 +4,9 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
         
-        // Mostrar estado de carga y ocultar errores
         showLoading();
         hideError();
         
-        // Cargar los datos del formulario
         const formData = {
             'Air_Pollution': parseInt(document.querySelector('#air_pollution').value),
             'Alcohol_use': parseInt(document.querySelector('#alcohol_use').value),
@@ -41,14 +39,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             const result = await response.json();
-
-            console.log('Prediction result:', result);
             
             if (result.error) {
                 throw new Error(result.error);
             }
 
-            // Mostrar resultados
             displayResults(result[0], formData);
             
         } catch (error) {
@@ -63,19 +58,19 @@ function showLoading() {
     document.querySelector('#loading').classList.remove('hidden');
     const submitBtn = document.querySelector('#submit-btn');
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Procesando...';
+    submitBtn.textContent = 'Analizando...';
 }
 
 function hideLoading() {
     document.querySelector('#loading').classList.add('hidden');
     const submitBtn = document.querySelector('#submit-btn');
     submitBtn.disabled = false;
-    submitBtn.textContent = 'Realizar Predicción';
+    submitBtn.textContent = 'Analizar Riesgo';
 }
 
 function showError(message) {
     const errorDiv = document.querySelector('#error-message');
-    errorDiv.textContent = message;
+    errorDiv.querySelector('div div').textContent = message;
     errorDiv.classList.remove('hidden');
     errorDiv.scrollIntoView({ behavior: 'smooth' });
 }
@@ -87,7 +82,7 @@ function hideError() {
 function getRiskLabel(predictionLabel) {
     const riskLabels = {
         0: 'Riesgo Bajo',
-        1: 'Riesgo Medio',
+        1: 'Riesgo Medio', 
         2: 'Riesgo Alto'
     };
     return riskLabels[predictionLabel] || `Nivel ${predictionLabel}`;
@@ -95,27 +90,27 @@ function getRiskLabel(predictionLabel) {
 
 function getRiskColor(predictionLabel) {
     const riskColors = {
-        0: 'text-green-600', // Verde para riesgo bajo
-        1: 'text-yellow-600', // Amarillo para riesgo medio
-        2: 'text-red-600'  // Rojo para riesgo alto
+        0: 'text-green-600',
+        1: 'text-yellow-600',
+        2: 'text-red-600'
     };
     return riskColors[predictionLabel] || 'text-gray-700';
 }
 
 function displayResults(prediction, formData) {
-    // Se esconde el formulario y se muestra la sección de resultados
-    document.querySelector('.bg-white.rounded-lg.shadow-lg.p-8.mb-8').classList.add('hidden');
+    // Ocultar formulario y mostrar resultados
+    document.querySelector('section:has(#prediccion-form)').classList.add('hidden');
     document.querySelector('#results-section').classList.remove('hidden');
     
-    // Mostrar resultados de la predicción
+    // Mostrar resultado
     const predictionElement = document.querySelector('#prediction-result');
     const riskLabel = getRiskLabel(prediction.prediction_label);
     const riskColorClass = getRiskColor(prediction.prediction_label);
     
     predictionElement.textContent = riskLabel;
-    predictionElement.className = `text-4xl font-bold uppercase tracking-wide mb-4 ${riskColorClass}`;
+    predictionElement.className = `text-5xl font-bold uppercase tracking-wide mb-6 ${riskColorClass}`;
     
-    // Mostrar el puntaje de confianza si está disponible
+    // Mostrar confianza
     if (prediction.prediction_score !== undefined) {
         document.querySelector('#confidence-value').textContent = (prediction.prediction_score * 100).toFixed(1);
     }
@@ -143,7 +138,6 @@ function displayResults(prediction, formData) {
     inputDataDiv.innerHTML = '';
     for (const [key, value] of Object.entries(formData)) {
         const div = document.createElement('div');
-        div.className = 'text-gray-700';
         div.innerHTML = `<strong>${labels[key]}:</strong> ${value}`;
         inputDataDiv.appendChild(div);
     }
@@ -152,13 +146,11 @@ function displayResults(prediction, formData) {
 }
 
 function resetForm() {
-    // Mostrar el formulario y ocultar la sección de resultados
-    document.querySelector('.bg-white.rounded-lg.shadow-lg.p-8.mb-8').classList.remove('hidden');
+    // Mostrar formulario y ocultar resultados
+    document.querySelector('section:has(#prediccion-form)').classList.remove('hidden');
     document.querySelector('#results-section').classList.add('hidden');
     
-    // Limpiar el formulario
     document.querySelector('#prediccion-form').reset();
-    
     hideError();
     
     window.scrollTo({ top: 0, behavior: 'smooth' });

@@ -6,41 +6,55 @@
     <title>{% block title %}Sistema de Predicción de Cáncer de Pulmón{% endblock %}</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body class="font-sans leading-relaxed text-gray-800 bg-gray-50">
-    <header class="bg-white border-b border-gray-200 shadow-sm">
-        <div class="max-w-6xl mx-auto px-5">
-            <div class="flex justify-between items-center py-4">
-                <div class="text-xl font-semibold text-gray-700">
-                    Sistema de Predicción de Cáncer de Pulmón
-                </div>
-                <nav class="flex space-x-8">
-                    <a href="{{ url_for('home') }}" 
-                       class="text-gray-600 font-medium hover:text-gray-800 transition-colors duration-200">
-                        Inicio
-                    </a>
-                    <a href="{{ url_for('formulario') }}" 
-                       class="text-gray-600 font-medium hover:text-gray-800 transition-colors duration-200">
-                        Nueva Predicción
-                    </a>
-                </nav>
-            </div>
+<body class="font-sans leading-relaxed text-gray-800">
+    <div class="min-h-screen w-full bg-white relative">
+        <div class="absolute inset-0 z-0" 
+             style="
+             background-image: 
+                linear-gradient(to right, rgba(71,85,105,0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(71,85,105,0.15) 1px, transparent 1px),
+                radial-gradient(circle at 50% 60%, rgba(236,72,153,0.15) 0%, rgba(168,85,247,0.05) 40%, transparent 70%);
+            background-size: 40px 40px, 40px 40px, 100% 100%;"
+            >
         </div>
-    </header>
-
-    <main class="py-8 min-h-screen">
-        <div class="max-w-6xl mx-auto px-5">
-            {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                    {% for category, message in messages %}
-                        <div class="mb-4 p-4 rounded-lg border {% if category == 'error' %}bg-red-50 border-red-200 text-red-800{% endif %}">
-                            {{ message }}
+        
+        <div class="relative z-10">
+            <header class="py-6">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="flex justify-between items-center">
+                        <div class="text-2xl font-bold text-gray-900">
+                            LungCancer AI
                         </div>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-            
-            {% block content %}{% endblock %}
+                        <nav class="flex space-x-10">
+                            <a href="{{ url_for('home') }}" 
+                               class="text-gray-600 font-medium hover:text-gray-900 transition-colors duration-200">
+                                Inicio
+                            </a>
+                            <a href="{{ url_for('formulario') }}" 
+                               class="bg-gray-900 text-white px-6 py-2 rounded-full font-medium hover:bg-gray-800 transition-colors duration-200">
+                                Evaluar Riesgo
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+
+            <main>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <div class="backdrop-blur-sm py-4">
+                            <div class="max-w-7xl mx-auto px-6">
+                                {% for category, message in messages %}
+                                    <div class="text-red-800">{{ message }}</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                
+                {% block content %}{% endblock %}
+            </main>
         </div>
-    </main>
+    </div>
 </body>
 </html>

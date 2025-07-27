@@ -1,40 +1,150 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="bg-white rounded-lg shadow-lg p-8 mb-8">
-    <h1 class="text-3xl font-bold text-gray-800 mb-6">
-        Bienvenido al Sistema de Predicción de Cáncer de Pulmón
-    </h1>
-    <p class="text-gray-600 mb-8 text-lg">
-        Este sistema utiliza inteligencia artificial para evaluar el riesgo de cáncer de pulmón basado en diversos factores de salud y estilo de vida.
-    </p>
-    
-    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Características del Sistema</h2>
-    <ul class="space-y-2 mb-8 pl-6">
-        <li class="text-gray-600 list-disc">Análisis basado en 15 factores de riesgo</li>
-        <li class="text-gray-600 list-disc">Modelo de machine learning entrenado con datos clínicos</li>
-        <li class="text-gray-600 list-disc">Interfaz fácil de usar y resultados inmediatos</li>
-        <li class="text-gray-600 list-disc">Validación de datos para garantizar precisión</li>
-    </ul>
-    
-    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Instrucciones de Uso</h2>
-    <p class="text-gray-600 mb-8">
-        Para realizar una predicción, complete el formulario con la información solicitada. Cada campo requiere un valor dentro de un rango específico basado en escalas médicas estándar.
-    </p>
-    
-    <div class="mb-8">
+<!-- Hero Section -->
+<section class="py-20">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+        <h1 class="text-5xl font-bold text-gray-900 mb-6">
+            Evaluación de Riesgo de Cáncer de Pulmón
+        </h1>
+        <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            Sistema inteligente que utiliza machine learning para evaluar el riesgo de cáncer de pulmón 
+            basado en factores de salud y estilo de vida
+        </p>
         <a href="{{ url_for('formulario') }}" 
-           class="inline-block px-6 py-3 bg-gray-700 text-white font-medium rounded-lg hover:bg-gray-800 transition-colors duration-200">
-            Realizar Nueva Predicción
+           class="inline-block bg-gray-900 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-800 transition-colors duration-200">
+            Comenzar Evaluación
         </a>
     </div>
-    
-    <div class="p-6 bg-gray-50 rounded-lg border border-gray-200">
-        <h3 class="text-xl font-semibold text-gray-800 mb-3">Importante</h3>
-        <p class="text-gray-700">
-            <strong>Este sistema es una herramienta de apoyo y no sustituye el diagnóstico médico profesional.</strong> 
-            Los resultados deben ser interpretados por un profesional de la salud calificado.
-        </p>
+</section>
+
+<section class="py-20">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">¿Cómo funciona nuestro sistema?</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Utilizamos algoritmos avanzados para analizar múltiples factores de riesgo y proporcionar una evaluación precisa
+            </p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-12">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Completa el Formulario</h3>
+                <p class="text-gray-600">
+                    Proporciona información sobre 15 factores de riesgo relacionados con tu salud y estilo de vida
+                </p>
+            </div>
+            
+            <div class="text-center">
+                <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Análisis Inteligente</h3>
+                <p class="text-gray-600">
+                    Nuestro modelo de IA procesa la información utilizando algoritmos entrenados con datos clínicos
+                </p>
+            </div>
+            
+            <div class="text-center">
+                <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Obtén Resultados</h3>
+                <p class="text-gray-600">
+                    Recibe una evaluación clara del nivel de riesgo con recomendaciones específicas
+                </p>
+            </div>
+        </div>
     </div>
-</div>
+</section>
+
+<section class="py-20">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Tecnología Médica Avanzada</h2>
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-6 h-6 bg-gray-900 rounded-full flex-shrink-0 mt-1"></div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900 mb-1">15 Factores de Análisis</h4>
+                            <p class="text-gray-600">Evaluamos factores como contaminación, genética, tabaquismo y síntomas</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-6 h-6 bg-gray-900 rounded-full flex-shrink-0 mt-1"></div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900 mb-1">Modelo Entrenado</h4>
+                            <p class="text-gray-600">Algoritmo de machine learning entrenado con datos clínicos reales</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-6 h-6 bg-gray-900 rounded-full flex-shrink-0 mt-1"></div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900 mb-1">Resultados Inmediatos</h4>
+                            <p class="text-gray-600">Obtén tu evaluación de riesgo en segundos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-8 rounded-2xl">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Factores Evaluados</h3>
+                <div class="grid grid-cols-2 gap-3 text-sm text-gray-600">
+                    <div>• Contaminación del aire</div>
+                    <div>• Consumo de alcohol</div>
+                    <div>• Alergia al polvo</div>
+                    <div>• Riesgos ocupacionales</div>
+                    <div>• Riesgo genético</div>
+                    <div>• Enfermedad pulmonar</div>
+                    <div>• Dieta balanceada</div>
+                    <div>• Obesidad</div>
+                    <div>• Tabaquismo</div>
+                    <div>• Fumador pasivo</div>
+                    <div>• Dolor en el pecho</div>
+                    <div>• Tos con sangre</div>
+                    <div>• Fatiga</div>
+                    <div>• Dificultad respiratoria</div>
+                    <div>• Resfriados frecuentes</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-20">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">¿Listo para evaluar tu riesgo?</h2>
+        <p class="text-lg text-gray-600 mb-8">
+            La evaluación toma menos de 5 minutos y puede ayudarte a tomar decisiones informadas sobre tu salud
+        </p>
+        <a href="{{ url_for('formulario') }}" 
+           class="inline-block bg-gray-900 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-800 transition-colors duration-200">
+            Comenzar Ahora
+        </a>
+    </div>
+</section>
+
+<!-- Disclaimer -->
+<section class="py-12">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <div class="p-6 rounded-2xl">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Importante</h3>
+            <p class="text-gray-600">
+                Este sistema es una herramienta de apoyo y <strong>no sustituye el diagnóstico médico profesional</strong>. 
+                Los resultados deben ser interpretados por un profesional de la salud calificado.
+            </p>
+        </div>
+    </div>
+</section>
 {% endblock %}
