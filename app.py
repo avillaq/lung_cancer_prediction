@@ -45,4 +45,4 @@ def predict():
     return jsonify(predicciones_df.to_dict(orient='records'))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False, host='0.0.0.0', port=5000)
