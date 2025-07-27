@@ -35,7 +35,6 @@ def predict():
         try:
             validados = validacion_schema.load(item)
             datos_validos.append({k.replace("_", " "): v for k, v in validados.items()})
-            print(f"Datos validados: {datos_validos}")
         except ValidationError as err:
             return jsonify({'error': err.messages}), 400
 
