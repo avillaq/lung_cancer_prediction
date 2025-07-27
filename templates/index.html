@@ -12,7 +12,7 @@
             basado en factores de salud y estilo de vida
         </p>
         <a href="{{ url_for('formulario') }}" 
-           class="inline-block bg-gray-900 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-800 transition-colors duration-200">
+           class="inline-block bg-gray-900 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-800 transition-all duration-200 shadow-lg hover:shadow-xl">
             Comenzar Evaluación
         </a>
     </div>
@@ -28,7 +28,7 @@
         </div>
         
         <div class="grid md:grid-cols-3 gap-12">
-            <div class="text-center">
+            <div class="text-center bg-white/60 backdrop-blur-sm p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-200">
                 <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
                     <svg class="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -40,7 +40,7 @@
                 </p>
             </div>
             
-            <div class="text-center">
+            <div class="text-center bg-white/60 backdrop-blur-sm p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-200">
                 <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
                     <svg class="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
@@ -52,7 +52,7 @@
                 </p>
             </div>
             
-            <div class="text-center">
+            <div class="text-center bg-white/60 backdrop-blur-sm p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-200">
                 <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
                     <svg class="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
@@ -97,7 +97,7 @@
                 </div>
             </div>
             
-            <div class="p-8 rounded-2xl">
+            <div class="bg-white/70 backdrop-blur-sm p-8 rounded-2xl shadow-md">
                 <h3 class="text-xl font-semibold text-gray-900 mb-4">Factores Evaluados</h3>
                 <div class="grid grid-cols-2 gap-3 text-sm text-gray-600">
                     <div>• Contaminación del aire</div>
@@ -121,7 +121,6 @@
     </div>
 </section>
 
-<!-- CTA Section -->
 <section class="py-20">
     <div class="max-w-4xl mx-auto px-6 text-center">
         <h2 class="text-3xl font-bold text-gray-900 mb-4">¿Listo para evaluar tu riesgo?</h2>
@@ -129,22 +128,21 @@
             La evaluación toma menos de 5 minutos y puede ayudarte a tomar decisiones informadas sobre tu salud
         </p>
         <a href="{{ url_for('formulario') }}" 
-           class="inline-block bg-gray-900 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-800 transition-colors duration-200">
+           class="inline-block bg-gray-900 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-800 transition-all duration-200 shadow-lg hover:shadow-xl">
             Comenzar Ahora
         </a>
     </div>
 </section>
 
-<!-- Disclaimer -->
-<section class="py-12">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-        <div class="p-6 rounded-2xl">
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">Importante</h3>
-            <p class="text-gray-600">
-                Este sistema es una herramienta de apoyo y <strong>no sustituye el diagnóstico médico profesional</strong>. 
+<section class="py-16">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="bg-amber-50/80 backdrop-blur-sm p-8 rounded-2xl text-center shadow-sm">
+                <h4 class="text-amber-800 font-semibold mb-4 text-lg">Importante</h4>
+                <p class="text-amber-800">
+                    Este sistema es una herramienta de apoyo y <strong>no sustituye el diagnóstico médico profesional</strong>. 
                 Los resultados deben ser interpretados por un profesional de la salud calificado.
-            </p>
+                </p>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 {% endblock %}
