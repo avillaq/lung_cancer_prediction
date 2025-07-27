@@ -1,8 +1,9 @@
 import pathlib
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from pycaret.classification import load_model, predict_model
 from schema import LungCancerInputSchema
 from marshmallow import ValidationError
+import pandas as pd
 
 app = Flask(__name__)
 
@@ -16,7 +17,11 @@ validacion_schema = LungCancerInputSchema()
 
 @app.route('/', methods=['GET'])
 def home():
-    return "API de Predicción de Cáncer de Pulmón"
+    return render_template('index.html')
+
+@app.route('/formulario', methods=['GET'])
+def formulario():
+    return render_template('form.html')
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -34,7 +39,6 @@ def predict():
         except ValidationError as err:
             return jsonify({'error': err.messages}), 400
 
-    import pandas as pd
     nuevo_data = pd.DataFrame(datos_validos)
     
     # Predicción
