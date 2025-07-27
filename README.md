@@ -40,15 +40,23 @@ Un sistema web profesional que utiliza machine learning para evaluar el riesgo d
 2. **Crear entorno virtual**
    ```bash
    python -m venv .venv
-   .venv\Scripts\activate   # En Linux: source .venv/bin/activate
    ```
 
-3. **Instalar dependencias**
+3. **Activar entorno virtual**
+   ```bash
+   # En Windows:
+   .venv\Scripts\activate
+   
+   # En Linux/macOS:
+   source .venv/bin/activate
+   ```
+
+4. **Instalar dependencias**
    ```bash
    pip install -r requirements.txt
    ```
 
-4. **Ejecutar la aplicación**
+5. **Ejecutar la aplicación**
    ```bash
    python app.py
    ```
@@ -162,13 +170,13 @@ Se realizaron comparaciones entre múltiples algoritmos de machine learning para
 
 | Modelo | Accuracy | F1 | Precision | Recall | AUC |
 |--------|----------|----|-----------| -------|-----|
-| **Logistic Regression** | **0.971** | **0.971** | **0.972** | **0.971** | **0.998** |
-| Decision Tree Classifier | 0.970 | 0.970 | 0.970 | 0.970 | 1.000 |
-| Quadratic Discriminant Analysis | 0.970 | 0.970 | 0.971 | 0.970 | 1.000 |
-| LGBM Classifier | 0.960 | 0.960 | 0.962 | 0.959 | 0.992 |
-| XGB Classifier | 0.960 | 0.960 | 0.962 | 0.959 | 0.998 |
-| Random Forest Classifier | 0.960 | 0.960 | 0.962 | 0.959 | 0.960 |
-| Gradient Boosting Classifier | 0.960 | 0.960 | 0.962 | 0.959 | 0.985 |
+| **Logistic Regression** | **0.97115** | **0.971469** | **0.972003** | **0.971126** | **0.997781** |
+| Decision Tree Classifier | 0.97010 | 0.969540 | 0.970258 | 0.969650 | 0.999985 |
+| Quadratic Discriminant Analysis | 0.96950 | 0.969583 | 0.970811 | 0.970408 | 1.000000 |
+| LGBM Classifier | 0.96000 | 0.960304 | 0.962111 | 0.959432 | 0.991985 |
+| XGB Classifier | 0.96000 | 0.960304 | 0.962111 | 0.959432 | 0.998452 |
+| Random Forest Classifier | 0.96000 | 0.960304 | 0.962111 | 0.959432 | 0.959552 |
+| Gradient Boosting Classifier | 0.96000 | 0.960304 | 0.962111 | 0.959432 | 0.984591 |
 
 **Logistic Regression** fue seleccionado como el mejor modelo con una precisión del 97.1%.
 
@@ -214,8 +222,6 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 
 - **Desarrollador Principal**: Alexander Villafuerte Quispe
 
-## 📞 Soporte
-
-### Contacto
+## 📞 Contacto
 
 - **Email**: villafuertequispealex@gmail.com
